@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>渡辺電機工業株式会社 背景调查报告</title>
+<style>
+  :root{
+    --paper: #f2eee3;
+    --panel: #faf8f0;
+    --ink: #201d16;
+    --ink-soft: #6b6556;
+    --ink-faint: #948d7a;
+    --accent: #bf4d1f;
+    --accent-soft: #bf4d1f1a;
+    --teal: #2f6e62;
+    --teal-soft: #2f6e621a;
+    --line: rgba(32,29,22,0.14);
+    --line-strong: rgba(32,29,22,0.28);
+    --shadow: 0 1px 2px rgba(32,29,22,0.06), 0 8px 24px rgba(32,29,22,0.05);
+
+    --font-display: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Songti SC", serif;
+    --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    --font-mono: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, "Roboto Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper: #15171a;
+      --panel: #1c1f23;
+      --ink: #eae5d7;
+      --ink-soft: #a8a294;
+      --ink-faint: #726c5e;
+      --accent: #e8823a;
+      --accent-soft: #e8823a26;
+      --teal: #63b3a0;
+      --teal-soft: #63b3a026;
+      --line: rgba(234,229,215,0.13);
+      --line-strong: rgba(234,229,215,0.26);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #15171a;
+    --panel: #1c1f23;
+    --ink: #eae5d7;
+    --ink-soft: #a8a294;
+    --ink-faint: #726c5e;
+    --accent: #e8823a;
+    --accent-soft: #e8823a26;
+    --teal: #63b3a0;
+    --teal-soft: #63b3a026;
+    --line: rgba(234,229,215,0.13);
+    --line-strong: rgba(234,229,215,0.26);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"]{
+    --paper: #f2eee3;
+    --panel: #faf8f0;
+    --ink: #201d16;
+    --ink-soft: #6b6556;
+    --ink-faint: #948d7a;
+    --accent: #bf4d1f;
+    --accent-soft: #bf4d1f1a;
+    --teal: #2f6e62;
+    --teal-soft: #2f6e621a;
+    --line: rgba(32,29,22,0.14);
+    --line-strong: rgba(32,29,22,0.28);
+    --shadow: 0 1px 2px rgba(32,29,22,0.06), 0 8px 24px rgba(32,29,22,0.05);
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before{
+    content:"";
+    position: fixed; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+  a{ color: var(--accent); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .page{ position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 40px 24px 96px; }
+
+  /* ---------- Nameplate header ---------- */
+  .nameplate{
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 32px;
+    padding: 32px 36px;
+    background: var(--panel);
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    flex-wrap: wrap;
+  }
+  .eyebrow{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  .nameplate h1{
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0 0 8px;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+  }
+  .nameplate .reading{
+    margin: 0 0 18px;
+    color: var(--ink-soft);
+    font-size: 14.5px;
+  }
+  .site-link{
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+  .nameplate-facts{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, auto));
+    gap: 14px 28px;
+    flex: 0 0 auto;
+    padding-left: 28px;
+    border-left: 1px dashed var(--line-strong);
+  }
+  .fact dt{
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 3px;
+  }
+  .fact dd{
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 14.5px;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+
+  /* ---------- Layout: sidebar + content ---------- */
+  .layout{ display: grid; grid-template-columns: 200px 1fr; gap: 48px; margin-top: 36px; align-items: start; }
+  .toc{ position: sticky; top: 24px; }
+  .toc p.label{ font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 12px; }
+  .toc ul{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .toc a{
+    display: block; text-decoration: none; color: var(--ink-soft);
+    font-size: 14px; padding: 7px 0 7px 14px;
+    border-left: 2px solid var(--line);
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .toc a:hover, .toc a:focus-visible{ color: var(--ink); border-left-color: var(--accent); }
+
+  main.content{ display: flex; flex-direction: column; gap: 64px; min-width: 0; }
+
+  section{ scroll-margin-top: 24px; }
+  .sec-head{ display:flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
+  .sec-mark{ font-family: var(--font-mono); color: var(--accent); font-size: 15px; }
+  h2{
+    font-family: var(--font-display);
+    font-size: clamp(21px, 2.6vw, 26px);
+    margin: 0; text-wrap: balance;
+  }
+  .sec-head{ border-bottom: 1px solid var(--line-strong); padding-bottom: 14px; }
+
+  h3{
+    font-family: var(--font-display);
+    font-size: 17px;
+    margin: 0 0 10px;
+    color: var(--ink);
+  }
+  p{ margin: 0 0 14px; max-width: 68ch; }
+  p.lede{ font-size: 17px; color: var(--ink); }
+  li:last-child{ margin-bottom: 0; }
+
+  .note{
+    background: var(--teal-soft);
+    border: 1px solid var(--teal);
+    border-radius: 4px;
+    padding: 16px 18px;
+    font-size: 14.5px;
+    color: var(--ink);
+    max-width: 68ch;
+  }
+  .note strong{ color: var(--teal); }
+
+  /* card grid for business domains */
+  .card-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 18px 0 8px; }
+  .card{
+    background: var(--panel); border: 1px solid var(--line); border-radius: 5px;
+    padding: 18px 20px;
+  }
+  .card .tag{ font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--teal); text-transform: uppercase; margin-bottom: 8px; display:block; }
+  .card p{ font-size: 14.5px; color: var(--ink-soft); margin: 0; }
+  .card p strong{ color: var(--ink); }
+
+  /* tables */
+  .table-wrap{ overflow-x: auto; margin: 18px 0; border: 1px solid var(--line-strong); border-radius: 5px; }
+  table{ border-collapse: collapse; width: 100%; min-width: 420px; font-size: 14.5px; }
+  thead th{
+    text-align: left; font-family: var(--font-mono); font-weight: 500;
+    font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-faint); background: var(--panel);
+    padding: 10px 16px; border-bottom: 1px solid var(--line-strong);
+  }
+  tbody td{ padding: 11px 16px; border-bottom: 1px solid var(--line); }
+  tbody tr:last-child td{ border-bottom: none; }
+  tbody tr:nth-child(even){ background: color-mix(in srgb, var(--panel) 55%, transparent); }
+  td.num, th.num{ font-family: var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; }
+
+  /* stat tiles */
+  .stat-row{ display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin: 18px 0; }
+  .stat{ background: var(--panel); border: 1px solid var(--line); border-radius: 5px; padding: 14px 16px; }
+  .stat .v{ font-family: var(--font-mono); font-size: 22px; font-variant-numeric: tabular-nums; color: var(--accent); display:block; }
+  .stat .k{ font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; display:block; }
+
+  ul.plain{ margin: 0 0 14px; padding-left: 20px; }
+  ul.plain li{ margin-bottom: 6px; font-size: 15px; }
+  ul.plain li::marker{ color: var(--accent); }
+
+  /* hardware/software split */
+  .split{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+  .split .col{ background: var(--panel); border: 1px solid var(--line); border-radius: 5px; padding: 20px 22px; }
+  .split .col.hw{ border-top: 3px solid var(--accent); }
+  .split .col.sw{ border-top: 3px solid var(--teal); }
+  .split h3{ display:flex; align-items:center; gap:8px; }
+  .split .col.hw h3::before{ content:"HW"; font-family: var(--font-mono); font-size:11px; background: var(--accent-soft); color: var(--accent); padding: 2px 6px; border-radius: 3px; }
+  .split .col.sw h3::before{ content:"SW"; font-family: var(--font-mono); font-size:11px; background: var(--teal-soft); color: var(--teal); padding: 2px 6px; border-radius: 3px; }
+  .split ul{ margin: 0; padding-left: 18px; }
+  .split li{ font-size: 14.5px; color: var(--ink-soft); margin-bottom: 8px; }
+  .split li strong{ color: var(--ink); }
+
+  /* sources list */
+  .src-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .src-list li{ border-bottom: 1px solid var(--line); padding: 12px 0; display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+  .src-list li:last-child{ border-bottom: none; }
+  .src-list a{ text-decoration: none; font-size: 14.5px; }
+  .src-list a:hover{ text-decoration: underline; }
+  .src-list .domain{ font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); white-space: nowrap; }
+
+  /* caution callouts */
+  .caution{
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 14px 18px;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 14px;
+    font-size: 14.5px;
+  }
+  .caution .lbl{ font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; display:block; margin-bottom: 6px; }
+
+  /* decorative gauge */
+  .dial{
+    width: 96px; height: 96px; border-radius: 50%; flex: 0 0 auto;
+    background:
+      radial-gradient(circle at 50% 50%, var(--panel) 0 58%, transparent 59%),
+      conic-gradient(from -130deg, var(--accent) 0deg, var(--accent) 260deg, transparent 260deg 360deg);
+    position: relative;
+    display: none;
+  }
+  .dial::after{
+    content:""; position:absolute; top:50%; left:50%; width: 3px; height: 34px;
+    background: var(--ink); border-radius: 2px; transform-origin: bottom center;
+    transform: translate(-50%,-100%) rotate(28deg);
+  }
+  .dial::before{
+    content:""; position:absolute; top:50%; left:50%; width:8px; height:8px; border-radius:50%;
+    background: var(--ink); transform: translate(-50%,-50%); z-index:2;
+  }
+
+  footer{
+    margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line);
+    font-size: 12.5px; color: var(--ink-faint); font-family: var(--font-mono);
+  }
+
+  @media (min-width: 720px){
+    .dial{ display: block; }
+  }
+  @media (max-width: 900px){
+    .layout{ grid-template-columns: 1fr; }
+    .toc{ position: static; border-bottom: 1px solid var(--line-strong); padding-bottom: 14px; }
+    .toc ul{ flex-direction: row; flex-wrap: wrap; gap: 8px 18px; }
+    .toc a{ border-left: none; border-bottom: 2px solid var(--line); padding: 4px 0; }
+    .toc a:hover, .toc a:focus-visible{ border-bottom-color: var(--accent); border-left-color: transparent; }
+    .split{ grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px){
+    .nameplate{ padding: 24px 20px; }
+    .nameplate-facts{ padding-left: 0; border-left: none; border-top: 1px dashed var(--line-strong); padding-top: 16px; grid-template-columns: repeat(2,1fr); width: 100%; }
+    .page{ padding: 24px 16px 64px; }
+  }
+  /* selection flow steps */
+  .flow{ display:flex; flex-wrap:wrap; gap:14px; margin:20px 0; align-items:stretch; }
+  .flow .step{ flex:1 1 120px; background:var(--panel); border:1px solid var(--line); border-radius:5px; padding:12px 14px; position:relative; }
+  .flow .step .n{ font-family:var(--font-mono); font-size:11px; color:var(--accent); display:block; margin-bottom:4px; }
+  .flow .step .t{ font-size:14px; color:var(--ink); }
+  .flow .step:not(:last-child)::after{ content:"›"; position:absolute; right:-11px; top:50%; transform:translateY(-50%); color:var(--ink-faint); font-family:var(--font-mono); font-size:18px; z-index:2; }
+
+  /* pros / cons */
+  .pc{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:20px 0; }
+  .pc .col{ background:var(--panel); border:1px solid var(--line); border-radius:5px; padding:18px 20px; }
+  .pc .col.pro{ border-top:3px solid var(--teal); }
+  .pc .col.con{ border-top:3px solid var(--accent); }
+  .pc h4{ margin:0 0 12px; font-family:var(--font-display); font-size:15.5px; display:flex; align-items:center; gap:8px; }
+  .pc .col.pro h4::before{ content:"＋"; font-family:var(--font-mono); color:var(--teal); }
+  .pc .col.con h4::before{ content:"⚠"; color:var(--accent); }
+  .pc ul{ margin:0; padding-left:18px; }
+  .pc li{ font-size:14px; color:var(--ink-soft); margin-bottom:9px; }
+  .pc li:last-child{ margin-bottom:0; }
+  .pc li strong{ color:var(--ink); }
+
+  /* timeline */
+  .tl{ list-style:none; margin:18px 0; padding:0; }
+  .tl li{ position:relative; padding:0 0 16px 26px; border-left:2px solid var(--line); }
+  .tl li:last-child{ padding-bottom:0; }
+  .tl li::before{ content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--accent); }
+  .tl .yr{ font-family:var(--font-mono); font-size:13px; color:var(--accent); margin-right:10px; }
+  .tl .ev{ font-size:14.5px; color:var(--ink-soft); }
+
+  /* question checklist */
+  .ask{ list-style:none; margin:16px 0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .ask li{ background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--teal); border-radius:0 4px 4px 0; padding:12px 16px; font-size:14.5px; }
+  .ask li .q{ color:var(--ink); }
+  .ask li .why{ display:block; margin-top:4px; font-size:13px; color:var(--ink-faint); }
+
+  @media (max-width:640px){
+    .pc{ grid-template-columns:1fr; }
+    .flow .step:not(:last-child)::after{ display:none; }
+  }
+  /* header overall score badge */
+  .score-badge{ flex:0 0 auto; align-self:stretch; display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:158px; padding:16px 20px; background:var(--paper); border:1px solid var(--line-strong); border-radius:6px; }
+  .score-badge .sb-label{ font-family:var(--font-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:2px; }
+  .score-badge .sb-num{ font-family:var(--font-mono); font-size:42px; line-height:1.02; font-variant-numeric:tabular-nums; color:var(--accent); }
+  .score-badge .sb-num small{ font-size:16px; color:var(--ink-faint); }
+  .score-badge .sb-grade{ font-family:var(--font-mono); font-size:12px; color:var(--accent); margin-bottom:12px; letter-spacing:0.03em; }
+  .score-badge .sb-break{ list-style:none; margin:0; padding:11px 0 0; border-top:1px dashed var(--line-strong); width:100%; display:flex; flex-direction:column; gap:5px; }
+  .score-badge .sb-break li{ display:flex; justify-content:space-between; gap:16px; font-family:var(--font-mono); font-size:11.5px; margin:0; }
+  .score-badge .sb-break li span:first-child{ color:var(--ink-soft); text-decoration:underline dotted var(--ink-faint); text-underline-offset:3px; }
+  .score-badge .sb-break li b{ color:var(--ink); font-weight:500; font-variant-numeric:tabular-nums; }
+  .score-badge .sb-break li{ cursor:pointer; border-radius:3px; padding:2px 5px; margin:0 -5px; transition:background .12s ease; }
+  .score-badge .sb-break li:hover, .score-badge .sb-break li:focus-visible{ background:var(--accent-soft); outline:none; }
+  .score-badge .sb-break li:hover span:first-child, .score-badge .sb-break li:focus-visible span:first-child{ color:var(--accent); text-decoration-color:var(--accent); }
+  .score-badge .sb-hint{ font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.06em; color:var(--ink-faint); margin-top:8px; text-transform:uppercase; }
+
+  /* score reason modal */
+  .modal-overlay{ position:fixed; inset:0; background:rgba(20,18,12,0.55); display:none; align-items:center; justify-content:center; padding:24px; z-index:50; }
+  .modal-overlay.open{ display:flex; }
+  .modal{ background:var(--panel); border:1px solid var(--line-strong); border-radius:8px; box-shadow:0 20px 60px rgba(0,0,0,0.4); max-width:480px; width:100%; padding:28px 30px; position:relative; }
+  .modal .m-close{ position:absolute; top:12px; right:14px; background:none; border:none; font-size:24px; line-height:1; color:var(--ink-faint); cursor:pointer; padding:4px 8px; border-radius:4px; }
+  .modal .m-close:hover{ color:var(--ink); background:var(--line); }
+  .modal .m-eyebrow{ font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin:0 0 6px; }
+  .modal h3{ font-family:var(--font-display); font-size:20px; margin:0 0 16px; }
+  .modal .m-score{ display:flex; align-items:baseline; gap:14px; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid var(--line); }
+  .modal .m-score .v{ font-family:var(--font-mono); font-size:36px; color:var(--accent); font-variant-numeric:tabular-nums; line-height:1; }
+  .modal .m-score .w{ font-family:var(--font-mono); font-size:12.5px; color:var(--ink-soft); }
+  .modal .m-reason{ font-size:14.5px; line-height:1.7; color:var(--ink); margin:0; max-width:none; }
+  .modal .m-src{ font-family:var(--font-mono); font-size:11.5px; color:var(--ink-faint); margin:16px 0 0; }
+
+  /* quantitative scorecard */
+
+  /* quantitative scorecard */
+  .scorecard{ display:flex; gap:26px; align-items:center; flex-wrap:wrap; background:var(--panel); border:1px solid var(--line-strong); border-radius:6px; padding:22px 26px; margin:18px 0; box-shadow:var(--shadow); }
+  .scorecard .big{ display:flex; flex-direction:column; flex:0 0 auto; }
+  .scorecard .big .num{ font-family:var(--font-mono); font-size:46px; font-variant-numeric:tabular-nums; color:var(--teal); line-height:1; }
+  .scorecard .big .num small{ font-size:20px; color:var(--ink-faint); }
+  .scorecard .big .grade{ font-family:var(--font-mono); font-size:13px; letter-spacing:0.06em; color:var(--teal); margin-top:8px; }
+  .scorecard .meter{ flex:1 1 260px; min-width:200px; }
+  .scorecard .meter .cap{ font-size:13px; color:var(--ink-soft); margin:0 0 8px; max-width:none; }
+  .scorecard .bar{ height:10px; border-radius:6px; background:var(--line); overflow:hidden; }
+  .scorecard .bar > i{ display:block; height:100%; background:linear-gradient(90deg, var(--teal), color-mix(in srgb, var(--teal) 70%, var(--accent))); border-radius:6px; }
+  .scorecard .scale{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); margin-top:6px; }
+  .score-pill{ font-family:var(--font-mono); font-size:12px; padding:2px 9px; border-radius:4px; background:var(--teal-soft); color:var(--teal); border:1px solid var(--teal); vertical-align:middle; margin-left:10px; letter-spacing:0.04em; }
+  td.sc{ font-family:var(--font-mono); font-variant-numeric:tabular-nums; color:var(--teal); }
+  .dim-tag{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.04em; color:var(--ink-faint); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header class="nameplate" id="top">
+    <div class="nameplate-main">
+      <p class="eyebrow">企业背景调查报告 · Company Dossier</p>
+      <h1>渡辺電機工業株式会社</h1>
+      <p class="reading">わたなべでんきこうぎょう ｜ Watanabe Electric Industries Co., Ltd.</p>
+      <a class="site-link" href="https://www.watanabe-electric.co.jp/" target="_blank" rel="noopener">watanabe-electric.co.jp ↗</a>
+    </div>
+    <dl class="nameplate-facts">
+      <div class="fact"><dt>创业 / 设立</dt><dd>1940 / 1951.07</dd></div>
+      <div class="fact"><dt>资本金</dt><dd>4,500万円</dd></div>
+      <div class="fact"><dt>代表取締役</dt><dd>原田陽平</dd></div>
+      <div class="fact"><dt>从业员数</dt><dd>约184名</dd></div>
+      <div class="fact"><dt>总部</dt><dd>东京・渋谷</dd></div>
+      <div class="fact"><dt>认证</dt><dd>ISO9001/14001</dd></div>
+    </dl>
+    <div class="score-badge" title="求职者视角综合评分（详见 §2 与根目录 JSON）">
+      <span class="sb-label">求职者综合评分</span>
+      <span class="sb-num">69<small>/100</small></span>
+      <span class="sb-grade">B · 可考虑</span>
+      <ul class="sb-break">
+        <li data-dim="finance"><span>财务稳健</span><b>97</b></li>
+        <li data-dim="comp"><span>待遇</span><b>62</b></li>
+        <li data-dim="growth"><span>成长</span><b>42</b></li>
+        <li data-dim="env"><span>环境</span><b>58</b></li>
+        <li data-dim="access"><span>易进度</span><b>72</b></li>
+      </ul>
+      <span class="sb-hint">点击项目看评分依据 ↗</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="目录">
+      <p class="label">§ Contents</p>
+      <ul>
+        <li><a href="#overview">公司做什么</a></li>
+        <li><a href="#finance">经营与财务</a></li>
+        <li><a href="#products">产品与市场</a></li>
+        <li><a href="#salary">新卒待遇</a></li>
+        <li><a href="#role">岗位详情</a></li>
+        <li><a href="#process">选考流程</a></li>
+        <li><a href="#culture">真实工作环境</a></li>
+        <li><a href="#playbook">求职者行动建议</a></li>
+        <li><a href="#sources">信息来源</a></li>
+        <li><a href="#caveats">待确认事项</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+
+      <section id="overview">
+        <div class="sec-head"><span class="sec-mark">§1</span><h2>公司是做什么的</h2></div>
+        <p class="lede">渡辺電機工業株式会社是一家专注于「<strong>计测・制御机器</strong>」的专业制造商，创业86年（创业1940年11月3日，法人设立1951年7月3日）。总部位于东京都渋谷区神宮前，另在大阪、名古屋设营业所，调布与福岛设有工场。</p>
+        <p>技术上整合了计测技术、エレクトロニクス技术、メカトロニクス技术与ソフトウェア技术，从产品开发做到售后客户支持。近年主打产品线包括 <strong>IoT ゲートウェイ／远程监控单元、电力量计・デマンド计</strong>等，公司正朝工业IoT方向转型。</p>
+
+        <div class="card-grid">
+          <div class="card">
+            <span class="tag">Solution</span>
+            <p><strong>ソリューションビジネス</strong> — 电力・能源监控系统、大楼（ビル）监控系统</p>
+          </div>
+          <div class="card">
+            <span class="tag">Component</span>
+            <p><strong>コンポーネントビジネス</strong> — 信号变换器、模拟/数字面板仪表、温度传感器、リモートI/O</p>
+          </div>
+          <div class="card">
+            <span class="tag">Automotive</span>
+            <p><strong>自动车整备机器业务</strong> — 汽车维修检测设备</p>
+          </div>
+        </div>
+
+        <h3>沿革要点</h3>
+        <ul class="tl">
+          <li><span class="yr">1940</span><span class="ev">创业（11月3日），从计测仪表起步</span></li>
+          <li><span class="yr">1951</span><span class="ev">法人设立「渡辺電機工業株式会社」（7月3日）</span></li>
+          <li><span class="yr">1960s–80s</span><span class="ev">确立信号变换器・数字面板仪表（デジタルパネルメータ）产品线，成长为该领域トップクラス厂商</span></li>
+          <li><span class="yr">2000s</span><span class="ev">取得 ISO9001／ISO14001，拓展电力・能源监控与大楼设施监控系统</span></li>
+          <li><span class="yr">2020</span><span class="ev">迎来创业80周年；受疫情影响当期出现小幅亏损（见下节财务）</span></li>
+          <li><span class="yr">近年</span><span class="ev">重心向工业 IoT 转型，推出 IoT ゲートウェイ／远程监控单元（WGWA 系列等）</span></li>
+        </ul>
+
+        <div class="note">
+          <strong>一句话总结：</strong>这是一家中小规模、历史悠久（近90年）的 B2B 工业计测仪表制造商，不是消费电子或互联网公司，客户是工厂、大楼设施管理方、汽车维修厂等。在「数字面板仪表」这类细分市场里是隐形冠军，正处在向 IoT 转型的阶段。
+        </div>
+      </section>
+
+      <section id="finance">
+        <div class="sec-head"><span class="sec-mark">§2</span><h2>经营与财务：这家公司稳不稳</h2></div>
+        <p class="lede">对求职者而言，比薪资更重要的是公司会不会突然裁员或倒闭。渡辺電機工業是<strong>财务非常保守、经营稳健</strong>的老牌制造商——高留存收益、低负债、资产逐年增厚。</p>
+
+        <h3>量化评分：经营财务稳健度 <span class="score-pill">A+ · 极稳健</span></h3>
+        <div class="scorecard">
+          <div class="big">
+            <span class="num">97<small>/100</small></span>
+            <span class="grade">GRADE A+ · 极稳健</span>
+          </div>
+          <div class="meter">
+            <p class="cap">8 项财务指标（资本安全 / 盈利 / 成长 / 抗风险）加权评分，倒闭·裁员风险<strong>极低</strong>。</p>
+            <div class="bar"><i style="width:97%"></i></div>
+            <div class="scale"><span>0 高风险</span><span>60 尚可</span><span>90 极稳健</span></div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>量化指标</th><th>维度</th><th class="num">数值</th><th class="num">得分</th><th class="num">权重</th></tr></thead>
+            <tbody>
+              <tr><td>自有资本比率 <span class="dim-tag">净资产/总资产</span></td><td>安全性</td><td class="num">≈85%</td><td class="num sc">5.0</td><td class="num">20</td></tr>
+              <tr><td>留存/营业额 缓冲倍数</td><td>安全性</td><td class="num">≈2.2倍</td><td class="num sc">5.0</td><td class="num">12</td></tr>
+              <tr><td>总资产纯利益率 ROA</td><td>盈利</td><td class="num">≈11.5%</td><td class="num sc">5.0</td><td class="num">15</td></tr>
+              <tr><td>纯利益率 <span class="dim-tag">*营业额为近似值</span></td><td>盈利</td><td class="num">≈30%*</td><td class="num sc">5.0</td><td class="num">10</td></tr>
+              <tr><td>总资产增长率 CAGR</td><td>成长</td><td class="num">≈8.7%/年</td><td class="num sc">5.0</td><td class="num">12</td></tr>
+              <tr><td>留存收益增长率 CAGR</td><td>成长</td><td class="num">≈8.1%/年</td><td class="num sc">5.0</td><td class="num">8</td></tr>
+              <tr><td>盈利连续性 <span class="dim-tag">近5年亏损年数</span></td><td>抗风险</td><td class="num">1年(疫情小亏)</td><td class="num sc">4.0</td><td class="num">13</td></tr>
+              <tr><td>抗风险恢复力</td><td>抗风险</td><td class="num">V型创新高</td><td class="num sc">5.0</td><td class="num">10</td></tr>
+              <tr><td><strong>加权合计</strong></td><td></td><td class="num"></td><td class="num sc"><strong>97.4</strong></td><td class="num"><strong>100</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note"><strong>评分口径：</strong>标准与各公司数据存于根目录 <code>经营财务稳健度评分.json</code>，各指标 0–5 分按权重加权归一到 100，可复用于其他公司横向对比。<span> </span>*纯利益率的营业额为公开报道近似值（官报通常不披露売上高）；即便实际营收更高，纯利益率仍≥10%，不改变评分。</div>
+
+        <h3>原始财务数据</h3>
+        <div class="stat-row">
+          <div class="stat"><span class="v">9.08亿円</span><span class="k">当期纯利益（FY2025/3）</span></div>
+          <div class="stat"><span class="v">66.6亿円</span><span class="k">利益剩余金（留存收益）</span></div>
+          <div class="stat"><span class="v">79.2亿円</span><span class="k">总资产（FY2025/3）</span></div>
+          <div class="stat"><span class="v">约30亿円</span><span class="k">年营业额规模（近年）</span></div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>决算期</th><th class="num">当期纯利益</th><th class="num">利益剩余金</th><th class="num">总资产</th></tr></thead>
+            <tbody>
+              <tr><td>FY2021 / 3（疫情期）</td><td class="num">▲1,357万円</td><td class="num">48.7亿円</td><td class="num">56.8亿円</td></tr>
+              <tr><td>FY2025 / 3</td><td class="num">9.08亿円</td><td class="num">66.6亿円</td><td class="num">79.2亿円</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>解读要点：</p>
+        <ul class="plain">
+          <li><strong>疫情年小幅亏损，之后强劲反弹。</strong>FY2021/3 因疫情出现约 1,357万円的小额亏损，但很快恢复，到 FY2025/3 纯利益已达 9亿円级别——说明抗风险能力强，且并非「一直不亏损」（网络上有此说法，但官报决算数据不支持，属误传）。</li>
+            <li><strong>家底厚、几乎不靠借钱经营。</strong>留存收益 66.6亿円占总资产 79.2亿円的绝大部分，自有资本比率高，是典型「现金充裕、稳健少债」的日本中小优良企业。四年间总资产从 56.8亿增至 79.2亿，持续增厚。</li>
+          <li><strong>主力银行</strong>为みずほ銀行、三菱UFJ銀行，反映其为传统实体制造企业。</li>
+        </ul>
+        <div class="note"><strong>对求职者的意义：</strong>倒闭・裁员风险很低，适合求稳定、长期发展的人；但另一面——高留存、少扩张，也往往对应「加薪慢、增长慢、变化少」的年功序列文化（见 §7）。</div>
+      </section>
+
+      <section id="products">
+        <div class="sec-head"><span class="sec-mark">§3</span><h2>产品与市场地位</h2></div>
+        <p>公司把「测量 → 数值化 → 可视化」作为核心价值：把温度、湿度、重量、电力等物理量转成可读数据，嵌入工厂产线、大楼空调、能源管理系统中。以下是主力产品线。</p>
+
+        <div class="split">
+          <div class="col hw">
+            <h3>コンポーネント（元器件・仪表）</h3>
+            <ul>
+              <li><strong>数字面板仪表 デジタルパネルメータ</strong> — 按 DIN 标准尺寸分 A6000／A7000／A8000／A2000 等系列，公司在此领域为 <strong>トップクラス（业界领先）</strong></li>
+              <li><strong>信号变换器</strong> — 各类模拟/数字信号转换</li>
+              <li><strong>温度传感器、リモートI/O</strong></li>
+            </ul>
+          </div>
+          <div class="col sw">
+            <h3>ソリューション（系统・IoT）</h3>
+            <ul>
+              <li><strong>电力・能源监控</strong> — 电力量计、デマンドコントローラ（需量控制器）</li>
+              <li><strong>大楼（ビル）设施监控</strong> — 空调等设备的监控控制</li>
+              <li><strong>IoT ゲートウェイ</strong> — WGWA 系列、Econo DataChef（WGWB）等，采集分散传感器数据、远程可视化、异常邮件告警</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note"><strong>市场定位一句话：</strong>细分市场（数字面板仪表）的隐形冠军，稳定的元器件业务是「现金牛」，IoT 远程监控是「增长押注」。<span> </span>面试时把「传统计测强项 + IoT 转型」讲清楚，是很好的志望动机切入点（见 §8）。</div>
+        <div class="caution"><span class="lbl">注意：勿与同名公司混淆</span>网络上有资料把「制御・组込系统开发／自动驾驶・铁路运行管理・发电站监控」等描述挂到「渡辺電機」名下——那些多为<strong>其他同名/近似名公司</strong>的信息。本报告以官网及官报决算为准。</div>
+      </section>
+
+      <section id="salary">
+        <div class="sec-head"><span class="sec-mark">§4</span><h2>新卒待遇：薪资・赏与</h2></div>
+        <p>来源为公司官方招聘站「募集要项」。</p>
+
+        <h3>初任给（月薪，含各类补贴）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>学历</th><th class="num">月给</th></tr></thead>
+            <tbody>
+              <tr><td>大学院卒（硕士）</td><td class="num">¥277,000</td></tr>
+              <tr><td>大学卒（本科）</td><td class="num">¥265,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat"><span class="v">年2回</span><span class="k">赏与（6月・12月）</span></div>
+          <div class="stat"><span class="v">年1回</span><span class="k">昇给（6月）</span></div>
+          <div class="stat"><span class="v">125天</span><span class="k">年间休日</span></div>
+          <div class="stat"><span class="v">10天</span><span class="k">入社6个月后有薪假</span></div>
+        </div>
+
+        <h3>各类津贴（手当）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>项目</th><th>标准</th></tr></thead>
+            <tbody>
+              <tr><td>通勤交通费</td><td>上限 10万円 / 月</td></tr>
+              <tr><td>住房补贴</td><td>单身 2万円 ｜ 有家属/世带主 3万円</td></tr>
+              <tr><td>家族津贴</td><td>配偶者 1万円 ｜ 子女每人 1万円</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>休假与其他福利</h3>
+        <ul class="plain">
+          <li>完全周休二日制（土・日・祝），夏季・年末年始休假</li>
+          <li>退休金制度、资格取得奨励金、永年勤续表彰</li>
+          <li>奨学金返还支援制度（协助偿还助学贷款）</li>
+        </ul>
+
+        <h3>整体薪资水平参考（含在职员工，非仅新卒）</h3>
+        <div class="stat-row">
+          <div class="stat"><span class="v">603万円</span><span class="k">doda 平均年收</span></div>
+          <div class="stat"><span class="v">300–550万円</span><span class="k">年收区间（各年龄层）</span></div>
+          <div class="stat"><span class="v">22.9h</span><span class="k">平均月加班（OpenWork）</span></div>
+          <div class="stat"><span class="v">44.6%</span><span class="k">有薪假消化率</span></div>
+        </div>
+        <p>OpenWork 综合评分 3.08/5.0（行业前26%，仅3人作答，样本量小）；就活会议与OpenWork评价均提到该公司初任给「在同规模公司中不错」，但整体偏「<strong>年功序列</strong>」——资历越久待遇越好，晋升与调薪节奏偏传统日企。</p>
+      </section>
+
+      <section id="role">
+        <div class="sec-head"><span class="sec-mark">§5</span><h2>岗位详情：設計開発エンジニア（ハードウェア・ソフトウェア）</h2></div>
+        <p>该公司「设计开发」岗位覆盖硬件与软件两条线（新卒采用学科要求「理系全学部全学科」），本质是面向公司主力产品——计测仪表 / 电力监控模块 / IoT网关——的软硬件一体化产品开发工程师。</p>
+
+        <div class="split">
+          <div class="col hw">
+            <h3>硬件方向</h3>
+            <ul>
+              <li><strong>回路设计</strong> — 模拟电路、数字电路、单片机周边电路</li>
+              <li><strong>基板・机构设计</strong> — 筐体与结构设计</li>
+              <li><strong>性能评价</strong> — 试作品动作确认、性能测试</li>
+              <li><strong>EMC对策</strong> — 公司具备完整EMC测试环境</li>
+              <li><strong>量产引継</strong> — 组装作业工序书、检查规格书编写</li>
+            </ul>
+          </div>
+          <div class="col sw">
+            <h3>软件方向</h3>
+            <ul>
+              <li><strong>嵌入式开发</strong> — Linux Boot 底层开发（含 BSP 板级支持包）</li>
+              <li><strong>WEB・クラウド开发</strong> — IoT网关产品的云端连接功能</li>
+              <li><strong>应用程序开发</strong> — 运行于 Linux 的应用软件，服务 IoT Gateway 产品线</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>符合公司「计测技术 + 电子 + 机电一体 + 软件」四位一体的整合战略，也呼应官网强调的产品向 IoT 化转型方向。入职后配有导师制（每位新人对接一名资深前辈一对一带教）。</p>
+      </section>
+
+      <section id="process">
+        <div class="sec-head"><span class="sec-mark">§6</span><h2>选考流程与就职难易度</h2></div>
+        <p>根据就活会议等平台的选考体验记（样本较少），新卒选考大致为以下流程，以<strong>个人面试为主</strong>（有「面试官1名・学生1名」的记录），面试压力相对温和。</p>
+
+        <div class="flow">
+          <div class="step"><span class="n">STEP 1</span><span class="t">エントリー・ES（履历表）</span></div>
+          <div class="step"><span class="n">STEP 2</span><span class="t">一次面试</span></div>
+          <div class="step"><span class="n">STEP 3</span><span class="t">二次面试</span></div>
+          <div class="step"><span class="n">STEP 4</span><span class="t">三次面试（或以后）</span></div>
+          <div class="step"><span class="n">STEP 5</span><span class="t">内定</span></div>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat"><span class="v">理系全学科</span><span class="k">设计开发岗招生对象</span></div>
+          <div class="stat"><span class="v">低调无名</span><span class="k">知名度低＝竞争者相对少</span></div>
+          <div class="stat"><span class="v">数据不足</span><span class="k">采用大学/倍率未公开</span></div>
+        </div>
+
+        <h3>求める人物像（公司/口碑倾向）</h3>
+        <div class="pc">
+          <div class="col pro">
+            <h4>比较契合的人</h4>
+            <ul>
+              <li>重视<strong>客户满意</strong>、对社会/行业动向敏感</li>
+              <li>能<strong>俯瞰全局</strong>思考、跨软硬件协作</li>
+              <li>愿意在一家公司<strong>长期深耕</strong>、求稳定</li>
+            </ul>
+          </div>
+          <div class="col con">
+            <h4>可能不契合的人</h4>
+            <ul>
+              <li>只想<strong>追最新技术</strong>、快速跳槽积累的人</li>
+              <li>视野较窄、<strong>被动等指示</strong>的人</li>
+              <li>期待<strong>快速晋升/大幅调薪</strong>的人（年功序列）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note"><strong>难度判断：</strong>公司知名度低、非人气大厂，就职难易度数据在各平台均「不足」，意味着<strong>竞争者相对少、门槛不算高</strong>；只要理系背景 + 志望动机讲得诚恳具体，拿到面试与内定的机会不小。</div>
+      </section>
+
+      <section id="culture">
+        <div class="sec-head"><span class="sec-mark">§7</span><h2>真实工作环境与员工评价（平衡视角）</h2></div>
+        <p class="lede">这一节把优点和「劝退点」都摊开讲。<strong>务必注意：各平台样本量都很小（OpenWork 仅3人、就活会议数条），评分波动大，仅供参考、勿当定论。</strong></p>
+
+        <div class="stat-row">
+          <div class="stat"><span class="v">约4%</span><span class="k">离职率（就活会议）</span></div>
+          <div class="stat"><span class="v">20–25h</span><span class="k">月平均加班</span></div>
+          <div class="stat"><span class="v">44–55%</span><span class="k">有薪假消化率</span></div>
+          <div class="stat"><span class="v">41.7岁</span><span class="k">员工平均年龄</span></div>
+        </div>
+
+        <div class="pc">
+          <div class="col pro">
+            <h4>正面评价</h4>
+            <ul>
+              <li><strong>离职率低（约4%）</strong>、经营稳定，工作有保障</li>
+              <li>不少部门<strong>加班少、休息可预期</strong>；周三为「无加班日（ノー残業デー）」</li>
+              <li>完全周休二日 + 夏季/年末年始，年间休日 125 天</li>
+              <li>新卒初任给在同规模公司中「不错」，有奖学金返还支援</li>
+              <li>有导师制，前辈一对一带教</li>
+            </ul>
+          </div>
+          <div class="col con">
+            <h4>负面/需警惕的声音</h4>
+            <ul>
+              <li>「成长・将来性」「WLB」在就活会议评分偏低（约1.4–1.7/5，样本极小）</li>
+              <li><strong>年功序列</strong>明显，评价制度被指「形骸化」、「好坏都不太被期待」</li>
+              <li>有「<strong>技能提升支援少</strong>、福利实惠感不强」的口碑</li>
+              <li>有口碑提到<strong>部分上司事后严厉指责、对骚扰问题意识低</strong>——因部门/上司而异</li>
+              <li>加班「政策上禁止无偿加班，但执行不一致」</li>
+            </ul>
+          </div>
+        </div>
+        <div class="caution"><span class="lbl">如何看待这些评价</span>负面口碑高度<strong>「因部门・因上司而异」</strong>，且样本少、发声者常带情绪。合理做法：不据此否定公司，而是把它们转成 §8 的<strong>面试逆问题</strong>，去核实你将要加入的<strong>具体部门</strong>的真实情况。</div>
+      </section>
+
+      <section id="playbook">
+        <div class="sec-head"><span class="sec-mark">§8</span><h2>求职者行动建议（Playbook）</h2></div>
+
+        <h3>志望动机怎么写才对味</h3>
+        <p>结合公司特质，最有说服力的切入点是「<strong>细分领域隐形冠军 + IoT 转型</strong>」这条主线：</p>
+        <ul class="plain">
+          <li>先讲「被计测・数字面板仪表这类<strong>支撑社会基础</strong>、又在细分市场领先的产品吸引」——呼应公司自我认知（无名但トップシェア）。</li>
+          <li>再讲「希望参与其<strong>向 IoT/远程监控转型</strong>」——把你的软硬件/嵌入式兴趣与 WGWA 网关产品线挂钩。</li>
+          <li>落到「想在一家<strong>稳健、能长期钻研技术</strong>的公司深耕」——契合其年功序列、重稳定的文化，避免显得只想「追新技术就走」。</li>
+        </ul>
+
+        <h3>面试时值得反问（逆質問）的问题</h3>
+        <p>这些既显示你做过功课，又能帮你核实前一节的疑点：</p>
+        <ul class="ask">
+          <li><span class="q">「我可能配属的部门，近半年的<strong>实际加班时长</strong>大概是多少？繁忙期集中在什么时候？」</span><span class="why">核实 WLB 因部门而异的说法</span></li>
+          <li><span class="q">「公司的<strong>评价・昇给机制</strong>是怎样的？年轻员工做出成果，多久能反映到待遇上？」</span><span class="why">探「年功序列/评价形骸化」是否属实</span></li>
+          <li><span class="q">「面向新人的<strong>技能培养・资格取得</strong>支援具体有哪些？」</span><span class="why">回应「技能提升支援少」的口碑</span></li>
+          <li><span class="q">「IoT ゲートウェイ等<strong>新业务的投入力度</strong>如何？是主力方向还是尝试性项目？」</span><span class="why">判断成长性与你能否参与到增长业务</span></li>
+          <li><span class="q">「设计开发岗新人前 1–2 年通常负责什么？<strong>软硬件如何分工</strong>？」</span><span class="why">确认岗位实际内容与个人裁量空间</span></li>
+        </ul>
+
+        <h3>入职前建议再核实的三件事</h3>
+        <ul class="plain">
+          <li><strong>目标岗位的招聘口径。</strong>若你看到的「設計開発エンジニア」来自 Indeed/猎头等聚合页，务必拿到<strong>原始招聘链接</strong>，核对经验要求与年收区间（新卒 vs 中途差别大）。</li>
+          <li><strong>薪资适用范围。</strong>本报告初任给数据来自新卒页；中途採用按经验协商，需单独确认。</li>
+          <li><strong>具体部门口碑。</strong>面试中留意上司风格、团队氛围——负面评价集中在「个别上司/部门」，这是你能亲自验证的关键变量。</li>
+        </ul>
+
+        <div class="note"><strong>综合结论：</strong>这是一家<strong>稳健、抗风险、适合长期主义者</strong>的 B2B 计测仪表隐形冠军，正朝 IoT 转型。若你看重<strong>稳定、可预期的生活节奏、想扎实做软硬件产品</strong>，契合度高；若你追求<strong>快速晋升、高强度成长、前沿技术光环</strong>，则需谨慎，并务必在面试中核实部门实况。</div>
+      </section>
+
+      <section id="sources">
+        <div class="sec-head"><span class="sec-mark">§9</span><h2>信息来源</h2></div>
+        <ul class="src-list">
+          <li><a href="https://www.watanabe-electric.co.jp/" target="_blank" rel="noopener">渡辺電機工業株式会社 官网</a><span class="domain">watanabe-electric.co.jp</span></li>
+          <li><a href="https://www.watanabe-electric.co.jp/company/outline.html" target="_blank" rel="noopener">会社概要・沿革（代表・従業員・拠点・取引銀行）</a><span class="domain">watanabe-electric.co.jp</span></li>
+          <li><a href="https://www.watanabe-electric.co.jp/iot/about.html" target="_blank" rel="noopener">IoTゲートウェイ 製品情报</a><span class="domain">watanabe-electric.co.jp</span></li>
+          <li><a href="https://catr.jp/companies/66801/146384" target="_blank" rel="noopener">官报决算数据库（纯利益・利益剩余金・总资产）</a><span class="domain">catr.jp</span></li>
+          <li><a href="https://watanabe-elec.rdy.jp/recruit" target="_blank" rel="noopener">采用情报站 — 募集要项（新卒/中途）</a><span class="domain">watanabe-elec.rdy.jp</span></li>
+          <li><a href="https://job.mynavi.jp/25/pc/search/corp75280/outline.html" target="_blank" rel="noopener">渡辺電機工業(株) マイナビ2025</a><span class="domain">job.mynavi.jp</span></li>
+          <li><a href="https://job.rikunabi.com/2024/company/r374081057/" target="_blank" rel="noopener">渡辺電機工業株式会社 リクナビ</a><span class="domain">job.rikunabi.com</span></li>
+          <li><a href="https://syukatsu-kaigi.jp/companies/119636/post_items/2/word_mouths" target="_blank" rel="noopener">就活会议 — 年収・ボーナス口コミ</a><span class="domain">syukatsu-kaigi.jp</span></li>
+          <li><a href="https://doda.jp/DodaFront/View/Company/j_id__00010096620/" target="_blank" rel="noopener">doda 企业概要 / 年収数据</a><span class="domain">doda.jp</span></li>
+          <li><a href="https://www.openwork.jp/company.php?m_id=a0C100000128tDY" target="_blank" rel="noopener">OpenWork 员工评价</a><span class="domain">openwork.jp</span></li>
+          <li><a href="https://www.r-agent.com/kensaku/companydetail/14100/" target="_blank" rel="noopener">リクルートエージェント 中途求人页面</a><span class="domain">r-agent.com</span></li>
+          <li><a href="https://www.onecareer.jp/companies/61942" target="_blank" rel="noopener">ワンキャリア 会社概要・选考</a><span class="domain">onecareer.jp</span></li>
+          <li><a href="https://jobtalk.jp/companies/5402/answers" target="_blank" rel="noopener">転職会議 员工口碑（全45件）</a><span class="domain">jobtalk.jp</span></li>
+          <li><a href="https://www.buffett-code.com/company/cib8zyn9eh/" target="_blank" rel="noopener">バフェット・コード 企业财务</a><span class="domain">buffett-code.com</span></li>
+        </ul>
+      </section>
+
+      <section id="caveats">
+        <div class="sec-head"><span class="sec-mark">§10</span><h2>待确认 / 建议进一步核实的点</h2></div>
+
+        <div class="caution">
+          <span class="lbl">代表者信息（已核实）</span>
+          现任<strong>代表取締役社長为原田陽平</strong>；渡辺秀禧为<strong>代表取締役会长・相談役名誉会长</strong>。部分求职平台（如ワンキャリア）仍显示旧社长「渡辺秀禧」，属信息滞后，本报告以官网为准。
+        </div>
+        <div class="caution">
+          <span class="lbl">财务口径</span>
+          财务数字取自官报决算数据库，官报通常不公开「売上高」，故营业额（约30亿円）为近年公开报道口径的近似值，纯利益/留存收益/总资产为官报确切值。
+        </div>
+        <div class="caution">
+          <span class="lbl">职位名称未精确对应</span>
+          「設計開発エンジニア（ハードウェア・ソフトウェア）」这一具体措辞，未能在公开网页上找到完全一致的独立招聘详情页，可能来自 Indeed / Green / Wantedly 等聚合平台或猎头页面。建议提供该职位原始招聘链接，以核实具体应聘条件（经验年限、必须技能）与年收范围。
+        </div>
+        <div class="caution">
+          <span class="lbl">薪资数据的适用范围</span>
+          上述赏与・薪资数据来自「新卒招聘」页面；若目标岗位是中途採用（社会人经验者），工资体系通常按经验与前职薪资协商，需另外确认。
+        </div>
+        <div class="caution">
+          <span class="lbl">评价样本量小</span>
+          OpenWork 仅3人作答，仅供参考，建议交叉参考転职会议等更多来源。
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>渡辺電機工業株式会社 背景调查报告 · 基于公开网络信息整理，仅供参考，关键决策前请与官方渠道核实</footer>
+</div>
+
+<div class="modal-overlay" id="reasonModal" role="dialog" aria-modal="true" aria-labelledby="rmTitle">
+  <div class="modal">
+    <button class="m-close" type="button" aria-label="关闭">×</button>
+    <p class="m-eyebrow">评分依据 · Why this score</p>
+    <h3 id="rmTitle"></h3>
+    <div class="m-score"><span class="v" id="rmScore"></span><span class="w" id="rmWeight"></span></div>
+    <p class="m-reason" id="rmReason"></p>
+    <p class="m-src" id="rmSrc"></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var DIMS = {
+    finance: {
+      t: "财务稳健度", s: "97 / 100", w: "权重 30% ｜ 财务评级 A+ 极稳健",
+      r: "8 项财务指标加权 97.4：自有资本比率≈85%、留存收益 66.6 亿円、总资产纯利益率 ROA≈11.5%、总资产四年 CAGR≈8.7%、留存收益 CAGR≈8.1%；近 5 年仅疫情年（FY2021/3）出现约 ▲1,357 万円小额亏损，之后 V 型复苏、留存与总资产双创新高。倒闭·裁员风险极低。",
+      src: "来源：§2 量化评分 · 根目录 经营财务稳健度评分.json"
+    },
+    comp: {
+      t: "待遇薪资", s: "62 / 100", w: "权重 22%",
+      r: "加分：新卒初任给 硕士 ¥277,000 / 本科 ¥265,000，在同规模公司口碑「不错」，doda 平均年收 603 万円，有奖学金返还支援。扣分：典型年功序列——年 1 回昇给、加薪慢；住房补贴（单身 2 万 / 世带主 3 万）等手当中规中矩。整体属「稳定但不高、涨得慢」。",
+      src: "来源：§4 新卒待遇 · doda / OpenWork"
+    },
+    growth: {
+      t: "成长与发展", s: "42 / 100", w: "权重 20% ｜ confidence 低（样本极小）",
+      r: "扣分：就活会议「成长·将来性」评分偏低（约 1.4–1.7/5），口碑提到技能提升支援少、评价制度被指「形骸化」，晋升节奏偏传统。加分：公司正向 IoT / 远程监控（WGWA 网关等）转型，提供一定新技术空间，并配有导师制。样本极小，仅供参考。",
+      src: "来源：§7 员工评价 · 就活会议 / OpenWork"
+    },
+    env: {
+      t: "工作环境与 WLB", s: "58 / 100", w: "权重 18% ｜ confidence 低（样本小）",
+      r: "加分：月均加班约 20–25h、周三设「无残業日（ノー残業デー）」、年间休日 125 天、完全周休二日、离职率约 4%。扣分：有薪假消化率仅 44–55%；有口碑提到个别上司事后严厉指责、对骚扰问题意识低——高度「因部门·因上司而异」。样本小，建议面试中亲自核实目标部门。",
+      src: "来源：§7 真实工作环境 · 就活会议 / OpenWork"
+    },
+    access: {
+      t: "进入门槛（求职者友好度）", s: "72 / 100", w: "权重 10%",
+      r: "知名度低 → 竞争者相对少；设计开发岗招「理系全学部全学科」、门槛不高；选考以个人面试为主、压力温和；各平台就职难易度数据「不足」。对求职者进入较友好。注意：此维度衡量「好不好进」，易进 ≠ 公司质量高，是独立于其他维度的指标。",
+      src: "来源：§6 选考流程与就职难易度"
+    }
+  };
+
+  var overlay = document.getElementById("reasonModal");
+  if(!overlay) return;
+  var elTitle = document.getElementById("rmTitle"),
+      elScore = document.getElementById("rmScore"),
+      elWeight = document.getElementById("rmWeight"),
+      elReason = document.getElementById("rmReason"),
+      elSrc = document.getElementById("rmSrc"),
+      btnClose = overlay.querySelector(".m-close"),
+      lastFocused = null;
+
+  function open(key){
+    var d = DIMS[key];
+    if(!d) return;
+    lastFocused = document.activeElement;
+    elTitle.textContent = d.t;
+    elScore.textContent = d.s;
+    elWeight.textContent = d.w;
+    elReason.textContent = d.r;
+    elSrc.textContent = d.src;
+    overlay.classList.add("open");
+    btnClose.focus();
+  }
+  function close(){
+    overlay.classList.remove("open");
+    if(lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".sb-break li[data-dim]"), function(li){
+    li.setAttribute("role", "button");
+    li.setAttribute("tabindex", "0");
+    li.addEventListener("click", function(){ open(li.getAttribute("data-dim")); });
+    li.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); open(li.getAttribute("data-dim")); }
+    });
+  });
+
+  btnClose.addEventListener("click", close);
+  overlay.addEventListener("click", function(e){ if(e.target === overlay) close(); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && overlay.classList.contains("open")) close(); });
+})();
+</script>
+</body>
+</html>

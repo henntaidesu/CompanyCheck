@@ -1,0 +1,246 @@
+{
+  "meta": {
+    "name": "企业「经营与财务稳健度」量化评分标准",
+    "version": "1.0",
+    "updated": "2026-07-06",
+    "purpose": "把求职背景调查中「这家公司稳不稳（会不会突然裁员/倒闭）」这一问题量化，统一口径以便横向比较多家公司。",
+    "scale": "总分 0–100。每个指标先按分档给 0–5 分，再 (得分/5)×权重 加总；缺失数据的指标可置 null，从权重中剔除后对剩余权重重新归一到 100。",
+    "design_target": "日本中小规模制造/技术企业（官报决算 / 有价证券报告书 / バフェット・コード 等可得的口径）。",
+    "how_to_add_company": "复制 companies[] 中任意条目为模板，填入 raw 原始财务数据与各 metric 的 value/score，按 bands 查表打分，最后计算 weighted_total 并对照 rating_bands 得到 grade。"
+  },
+
+  "rating_bands": [
+    { "min": 90, "grade": "A+", "label": "极稳健", "meaning": "现金充裕、几乎无债，倒闭/裁员风险极低" },
+    { "min": 80, "grade": "A",  "label": "稳健",   "meaning": "财务健康，抗风险能力强" },
+    { "min": 70, "grade": "B+", "label": "良好",   "meaning": "整体稳定，个别指标一般" },
+    { "min": 60, "grade": "B",  "label": "尚可",   "meaning": "基本健康，需关注成长性或盈利波动" },
+    { "min": 50, "grade": "C",  "label": "需留意", "meaning": "存在结构性弱点，建议进一步核实" },
+    { "min": 40, "grade": "D",  "label": "风险偏高", "meaning": "负债高或持续亏损，就业稳定性存疑" },
+    { "min": 0,  "grade": "E",  "label": "高风险", "meaning": "资不抵债/连年亏损，慎入" }
+  ],
+
+  "overall_model": {
+    "name": "求职者视角 · 公司综合评分",
+    "scale": "0–100，各维度 0–100 分按权重加权。",
+    "note": "「财务稳健度」维度直接取本文件 metrics 的加权结果（weighted_total，四舍五入）；其余维度基于报告中的待遇/口碑/成长信息打分，样本小的维度 confidence 较低，权重可按个人偏好自行调整。此分数衡量「对求职者的综合吸引力」，与单看财务的稳健度不同。",
+    "grade_bands": [
+      { "min": 80, "grade": "A",  "label": "强烈推荐" },
+      { "min": 70, "grade": "B+", "label": "推荐" },
+      { "min": 60, "grade": "B",  "label": "可考虑（有取舍）" },
+      { "min": 50, "grade": "C",  "label": "中性" },
+      { "min": 40, "grade": "D",  "label": "谨慎" },
+      { "min": 0,  "grade": "E",  "label": "不推荐" }
+    ],
+    "dimensions": [
+      { "id": "finance_stability", "name": "财务稳健度",           "weight": 30, "source": "本文件 metrics 加权 → weighted_total" },
+      { "id": "compensation",      "name": "待遇薪资",             "weight": 22, "source": "§4 新卒待遇 / doda / OpenWork" },
+      { "id": "growth_dev",        "name": "成长与发展",           "weight": 20, "source": "§7 成长·将来性口碑 / 技能支援 / IoT转型" },
+      { "id": "work_env",          "name": "工作环境与WLB",        "weight": 18, "source": "§7 加班 / 年休 / 有薪假 / 上司口碑" },
+      { "id": "accessibility",     "name": "进入门槛(求职者友好度)", "weight": 10, "source": "§6 知名度 / 竞争 / 招生对象" }
+    ]
+  },
+
+  "dimensions": [
+    { "id": "safety",        "name": "资本结构与安全性", "weight": 32, "desc": "自有资本厚度、家底能撑多久，是「倒闭风险」的核心。" },
+    { "id": "profitability", "name": "盈利能力",         "weight": 25, "desc": "赚不赚钱、赚钱效率，决定能否自我造血。" },
+    { "id": "growth",        "name": "成长性",           "weight": 20, "desc": "资产与留存是否逐年增厚，反映长期方向。" },
+    { "id": "stability",     "name": "稳定性与抗风险",   "weight": 23, "desc": "盈利连续性与受冲击后的恢复力，是「裁员风险」的核心。" }
+  ],
+
+  "metrics": [
+    {
+      "id": "equity_ratio",
+      "name": "自有资本比率",
+      "dimension": "safety",
+      "unit": "%",
+      "weight": 20,
+      "direction": "higher_better",
+      "formula": "净资产 / 总资产 × 100（净资产不明时用「利益剩余金 / 总资产」近似，并将 confidence 标为 medium）",
+      "source": "官报决算 / 有报 / バフェット・コード",
+      "bands": [
+        { "min": 70, "score": 5, "label": "极高（几乎无债）" },
+        { "min": 55, "score": 4, "label": "高" },
+        { "min": 40, "score": 3, "label": "中" },
+        { "min": 25, "score": 2, "label": "偏低" },
+        { "min": 10, "score": 1, "label": "低（依赖负债）" },
+        { "min": 0,  "score": 0, "label": "极低 / 资不抵债" }
+      ]
+    },
+    {
+      "id": "retained_buffer",
+      "name": "留存收益 / 年营业额（缓冲倍数）",
+      "dimension": "safety",
+      "unit": "倍",
+      "weight": 12,
+      "direction": "higher_better",
+      "formula": "利益剩余金 / 年营业额。衡量在无收入情况下家底大致能覆盖多少年运营。",
+      "source": "官报决算 / 公开营业额",
+      "bands": [
+        { "min": 2.0, "score": 5, "label": "极厚（>2年营收）" },
+        { "min": 1.0, "score": 4, "label": "厚" },
+        { "min": 0.5, "score": 3, "label": "中" },
+        { "min": 0.2, "score": 2, "label": "薄" },
+        { "min": 0.0, "score": 1, "label": "很薄" },
+        { "min": -999, "score": 0, "label": "累积亏损（负）" }
+      ]
+    },
+    {
+      "id": "roa",
+      "name": "总资产纯利益率（ROA）",
+      "dimension": "profitability",
+      "unit": "%",
+      "weight": 15,
+      "direction": "higher_better",
+      "formula": "当期纯利益 / 总资产 × 100。比纯利益率更稳健（不依赖不易核实的营业额）。",
+      "source": "官报决算",
+      "bands": [
+        { "min": 10, "score": 5, "label": "很高" },
+        { "min": 6,  "score": 4, "label": "高" },
+        { "min": 3,  "score": 3, "label": "中" },
+        { "min": 0,  "score": 2, "label": "微利" },
+        { "min": -3, "score": 1, "label": "小亏" },
+        { "min": -999, "score": 0, "label": "大幅亏损" }
+      ]
+    },
+    {
+      "id": "net_margin",
+      "name": "纯利益率",
+      "dimension": "profitability",
+      "unit": "%",
+      "weight": 10,
+      "direction": "higher_better",
+      "formula": "当期纯利益 / 年营业额 × 100。营业额为近似值时 confidence 标 low。",
+      "source": "官报决算 + 公开营业额",
+      "bands": [
+        { "min": 10, "score": 5, "label": "很高" },
+        { "min": 6,  "score": 4, "label": "高" },
+        { "min": 3,  "score": 3, "label": "中" },
+        { "min": 0,  "score": 2, "label": "微利" },
+        { "min": -3, "score": 1, "label": "小亏" },
+        { "min": -999, "score": 0, "label": "大幅亏损" }
+      ]
+    },
+    {
+      "id": "asset_cagr",
+      "name": "总资产增长率（CAGR）",
+      "dimension": "growth",
+      "unit": "%/年",
+      "weight": 12,
+      "direction": "higher_better",
+      "formula": "(期末总资产 / 期初总资产)^(1/年数) − 1，取近 3–5 年。",
+      "source": "官报决算多期对比",
+      "bands": [
+        { "min": 8,  "score": 5, "label": "快速增厚" },
+        { "min": 4,  "score": 4, "label": "稳步增长" },
+        { "min": 1,  "score": 3, "label": "缓增" },
+        { "min": 0,  "score": 2, "label": "基本持平" },
+        { "min": -5, "score": 1, "label": "缩表" },
+        { "min": -999, "score": 0, "label": "大幅缩表" }
+      ]
+    },
+    {
+      "id": "earnings_cagr",
+      "name": "留存收益增长率（CAGR）",
+      "dimension": "growth",
+      "unit": "%/年",
+      "weight": 8,
+      "direction": "higher_better",
+      "formula": "(期末利益剩余金 / 期初利益剩余金)^(1/年数) − 1，取近 3–5 年。",
+      "source": "官报决算多期对比",
+      "bands": [
+        { "min": 8,  "score": 5, "label": "快速累积" },
+        { "min": 4,  "score": 4, "label": "稳步累积" },
+        { "min": 1,  "score": 3, "label": "缓增" },
+        { "min": 0,  "score": 2, "label": "持平" },
+        { "min": -999, "score": 1, "label": "留存下降但仍为正" },
+        { "min": -9999, "score": 0, "label": "累积亏损扩大" }
+      ]
+    },
+    {
+      "id": "profit_continuity",
+      "name": "盈利连续性（近5年亏损年数）",
+      "dimension": "stability",
+      "unit": "年",
+      "weight": 13,
+      "direction": "lower_better",
+      "formula": "统计近 5 个决算期中出现亏损的年数；1 年亏损若为外部冲击（如疫情）且金额小，按 4 分。",
+      "source": "官报决算多期对比",
+      "bands": [
+        { "max": 0, "score": 5, "label": "全期盈利" },
+        { "max": 1, "score": 4, "label": "1年小亏（外部冲击）" },
+        { "max": 1.5, "score": 3, "label": "1年大额亏损" },
+        { "max": 2, "score": 2, "label": "2年亏损" },
+        { "max": 3, "score": 1, "label": "3年亏损" },
+        { "max": 999, "score": 0, "label": "≥4年亏损" }
+      ]
+    },
+    {
+      "id": "resilience",
+      "name": "抗风险恢复力（定性分级）",
+      "dimension": "stability",
+      "unit": "级",
+      "weight": 10,
+      "direction": "higher_better",
+      "formula": "观察最近一次业绩下滑后的恢复轨迹，按等级打分。",
+      "source": "官报决算多期 + 公开报道",
+      "bands": [
+        { "level": "V型强复苏并创新高", "score": 5 },
+        { "level": "1–2年内稳步恢复",   "score": 4 },
+        { "level": "缓慢恢复",           "score": 3 },
+        { "level": "恢复乏力",           "score": 2 },
+        { "level": "尚未恢复",           "score": 1 },
+        { "level": "持续恶化",           "score": 0 }
+      ]
+    }
+  ],
+
+  "companies": [
+    {
+      "name": "渡辺電機工業株式会社",
+      "reading": "わたなべでんきこうぎょう",
+      "fiscal_year": "FY2025/3",
+      "compare_years": ["FY2021/3", "FY2025/3"],
+      "currency": "JPY(亿円)",
+      "raw": {
+        "当期纯利益": 9.08,
+        "利益剩余金": 66.6,
+        "总资产": 79.2,
+        "年营业额_近似": 30,
+        "资本金": 0.45,
+        "净资产_估算": 67.0,
+        "对比期_FY2021": { "当期纯利益": -0.136, "利益剩余金": 48.7, "总资产": 56.8 }
+      },
+      "metrics": {
+        "equity_ratio":     { "value": 85,   "score": 5, "confidence": "medium", "note": "净资产以「留存66.6+资本金0.45」近似估约67亿 / 总资产79.2≈85%" },
+        "retained_buffer":  { "value": 2.2,  "score": 5, "confidence": "medium", "note": "66.6 / 30≈2.2倍，营业额为近似口径" },
+        "roa":              { "value": 11.5, "score": 5, "confidence": "high",   "note": "9.08 / 79.2≈11.5%" },
+        "net_margin":       { "value": 30,   "score": 5, "confidence": "low",    "note": "9.08 / 30≈30%；营业额为近似值，即便实际营收更高（如40–50亿）纯利益率仍≥10%→维持5分" },
+        "asset_cagr":       { "value": 8.7,  "score": 5, "confidence": "high",   "note": "56.8→79.2，4年，CAGR≈8.7%/年" },
+        "earnings_cagr":    { "value": 8.1,  "score": 5, "confidence": "high",   "note": "48.7→66.6，4年，CAGR≈8.1%/年" },
+        "profit_continuity":{ "value": 1,    "score": 4, "confidence": "medium", "note": "近5年仅FY2021/3因疫情小额亏损(约▲1,357万)，其余盈利" },
+        "resilience":       { "value": "V型强复苏并创新高", "score": 5, "confidence": "high", "note": "从疫情小亏迅速反弹至FY2025纯利益9亿级、留存与总资产双创新高" }
+      },
+      "weighted_total": 97.4,
+      "grade": "A+",
+      "label": "极稳健",
+      "summary": "高留存(66.6亿)、低负债、自有资本比率约85%，资产与留存四年持续增厚，疫情年小亏后V型复苏。倒闭/裁员风险极低；代价是高留存少扩张，往往对应加薪慢、增长慢的年功序列文化。",
+      "watchouts": [
+        "营业额(约30亿)为公开报道近似口径，官报通常不披露売上高，故纯利益率/缓冲倍数为估算值。",
+        "仅掌握FY2021与FY2025两期确切数据，中间年度为趋势推断，profit_continuity 亏损年数按已知信息估计。"
+      ],
+      "overall": {
+        "dimensions": {
+          "finance_stability": { "score": 97, "confidence": "high",   "note": "= 本公司 metrics 加权 97.4" },
+          "compensation":       { "score": 62, "confidence": "medium", "note": "新卒初任给265–277k在同规模不错，doda平均年收603万；但年功序列、加薪慢、手当中规中矩" },
+          "growth_dev":         { "score": 42, "confidence": "low",    "note": "就活会议「成长·将来性」评分偏低(约1.4–1.7/5)、技能提升支援少；IoT转型提供一定空间；样本极小" },
+          "work_env":           { "score": 58, "confidence": "low",    "note": "月加班约20–25h、年休125天、周三无残業日；有薪假消化44–55%，个别上司口碑差；样本小" },
+          "accessibility":      { "score": 72, "confidence": "medium", "note": "知名度低→竞争者少、理系全学科招生、门槛不高，对求职者较友好" }
+        },
+        "weighted_total": 68.8,
+        "grade": "B",
+        "label": "可考虑（稳定型，成长有限）",
+        "verdict": "抗风险能力顶级、适合长期主义者；成长性与加薪速度是主要短板。求稳定者契合度高，追求快速成长/前沿技术者需谨慎。"
+      }
+    }
+  ]
+}
